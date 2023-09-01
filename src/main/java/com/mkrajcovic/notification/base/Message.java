@@ -1,5 +1,10 @@
 package com.mkrajcovic.notification.base;
 
+/**
+ * Simple message with subject and a textual body.
+ *
+ * @author mkrajcovic
+ */
 public class Message {
 
 	private String subject;
