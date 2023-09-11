@@ -133,9 +133,9 @@ public class NotificationLoader {
 	@SuppressWarnings("unchecked")
 	private static Set<Class<? extends Notification>> findRegisteredImplementors(Set<String> classNames) {
 		return classNames.stream()
-			.map(cn -> getClass(cn))
+			.map(NotificationLoader::getClass)
 			.filter(Objects::nonNull)
-			.filter(c -> isNotificationSubclass(c)) // NOSONAR more readable than method ref.
+			.filter(NotificationLoader::isNotificationSubclass)
 			.map(e -> (Class<? extends Notification>) e)
 			.collect(toCollection(LinkedHashSet::new));
 	}
