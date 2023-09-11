@@ -29,10 +29,13 @@ class NotificationLoaderTest {
 		 * the NotNotificationImplementor is neither, so it should not get loaded
 		 */
 		assertEquals(2, notifications.size());
-		assertEquals(TestNotification.class, notifications.get(0).getClass());
-		assertEquals(UserTestNotification.class, notifications.get(1).getClass());
-		assertFalse(notifications.stream().anyMatch(e -> e.getClass().equals(NotNotificationImplementor.class)));
 
+		assertEquals(TestNotification.class, notifications.get(0).getClass());
+
+		assertEquals(UserTestNotification.class, notifications.get(1).getClass());
+
+		assertFalse(notifications.stream()
+			.anyMatch(e -> e.getClass().equals(NotNotificationImplementor.class)));
 	}
 
 }
