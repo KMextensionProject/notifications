@@ -1,4 +1,4 @@
-package io.github.mkrajcovic.notification.classloading;
+package io.github.kmextensionproject.notification.classloading;
 
 import static java.util.Objects.nonNull;
 
@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import io.github.mkrajcovic.notification.base.Notification;
+import io.github.kmextensionproject.notification.base.Notification;
 
 /**
  * This class represents a single global registry for user defined direct

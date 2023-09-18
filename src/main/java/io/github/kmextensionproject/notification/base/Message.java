@@ -1,4 +1,4 @@
-package io.github.mkrajcovic.notification.base;
+package io.github.kmextensionproject.notification.base;
 
 /**
  * Simple message with subject and a textual body.

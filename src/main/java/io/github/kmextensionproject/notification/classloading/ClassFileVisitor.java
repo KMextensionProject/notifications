@@ -1,4 +1,4 @@
-package io.github.mkrajcovic.notification.classloading;
+package io.github.kmextensionproject.notification.classloading;
 
 import static java.nio.file.FileVisitResult.CONTINUE;
 

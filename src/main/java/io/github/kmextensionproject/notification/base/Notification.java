@@ -1,16 +1,16 @@
-package io.github.mkrajcovic.notification.base;
+package io.github.kmextensionproject.notification.base;
 
 import java.io.IOException;
 import java.util.Collection;
 
-import io.github.mkrajcovic.notification.classloading.GlobalNotificationRegistry;
-import io.github.mkrajcovic.notification.classloading.NotificationLoader;
+import io.github.kmextensionproject.notification.classloading.GlobalNotificationRegistry;
+import io.github.kmextensionproject.notification.classloading.NotificationLoader;
 
 /**
  * Implementing this common interface for sending multi-platform simple messages
  * allows implementors to be automatically registered for harvest by the
  * {@link NotificationLoader} class if they come from
- * {@code io.github.mkrajcovic.notification} domain, otherwise if the user implements
+ * {@code io.github.kmextensionproject.notification} domain, otherwise if the user implements
  * this interface and provides own platform notifications, it should be manually
  * put to registry using the {@link GlobalNotificationRegistry}.
  *

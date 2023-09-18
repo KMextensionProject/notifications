@@ -1,4 +1,4 @@
-package io.github.mkrajcovic.notification.classloading;
+package io.github.kmextensionproject.notification.classloading;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -7,10 +7,10 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import io.github.mkrajcovic.notification.base.Notification;
-import io.github.mkrajcovic.notification.classloading.GlobalNotificationRegistry;
-import io.github.mkrajcovic.notification.classloading.NotificationLoader;
-import io.github.mkrajcovic.notification.classloading.NotificationRegistry;
+import io.github.kmextensionproject.notification.base.Notification;
+import io.github.kmextensionproject.notification.classloading.GlobalNotificationRegistry;
+import io.github.kmextensionproject.notification.classloading.NotificationLoader;
+import io.github.kmextensionproject.notification.classloading.NotificationRegistry;
 import user.domain.UserTestNotification;
 
 class NotificationLoaderTest {

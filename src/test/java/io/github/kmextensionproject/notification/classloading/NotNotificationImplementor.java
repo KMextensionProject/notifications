@@ -1,9 +1,9 @@
-package io.github.mkrajcovic.notification.classloading;
+package io.github.kmextensionproject.notification.classloading;
 
 import java.io.IOException;
 
-import io.github.mkrajcovic.notification.base.Message;
-import io.github.mkrajcovic.notification.base.Recipient;
+import io.github.kmextensionproject.notification.base.Message;
+import io.github.kmextensionproject.notification.base.Recipient;
 
 public class NotNotificationImplementor {
 

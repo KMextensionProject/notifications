@@ -1,4 +1,4 @@
-package io.github.mkrajcovic.notification.classloading;
+package io.github.kmextensionproject.notification.classloading;
 
 import static java.nio.file.Files.walkFileTree;
 import static java.util.Arrays.stream;
@@ -22,8 +22,8 @@ import java.util.logging.Logger;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
-import io.github.mkrajcovic.notification.base.Notification;
-import io.github.mkrajcovic.notification.base.StandardOutputNotification;
+import io.github.kmextensionproject.notification.base.Notification;
+import io.github.kmextensionproject.notification.base.StandardOutputNotification;
 
 /**
  * Use this class to load multiple plugged in domain {@link Notification}
@@ -38,7 +38,7 @@ import io.github.mkrajcovic.notification.base.StandardOutputNotification;
 public class NotificationLoader {
 
 	private static final Logger LOG = getLogger(NotificationLoader.class.getName());
-	private static final String DOMAIN_PACKAGE = "io.github.mkrajcovic.notification";
+	private static final String DOMAIN_PACKAGE = "io.github.kmextensionproject.notification";
 
 	private NotificationLoader() {
 		throw new IllegalStateException("NotificationLoader was not designed to be instantiated");
@@ -48,7 +48,7 @@ public class NotificationLoader {
 	 * Uses reflection to load registered {@link Notification} direct
 	 * implementations found on the class path in the following order:
 	 * <ul>
-	 * <li>modules under {@code io.github.mkrajcovic.notification} domain</li>
+	 * <li>modules under {@code io.github.kmextensionproject.notification} domain</li>
 	 * <li>user classes added to the {@link GlobalNotificationRegistry}</li>
 	 * </ul>
 	 * <p>

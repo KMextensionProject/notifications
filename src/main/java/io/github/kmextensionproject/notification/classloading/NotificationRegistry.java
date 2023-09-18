@@ -1,6 +1,6 @@
-package io.github.mkrajcovic.notification.classloading;
+package io.github.kmextensionproject.notification.classloading;
 
-import io.github.mkrajcovic.notification.base.Notification;
+import io.github.kmextensionproject.notification.base.Notification;
 
 public interface NotificationRegistry {
 
