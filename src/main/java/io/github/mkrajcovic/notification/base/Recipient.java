@@ -1,4 +1,4 @@
-package com.mkrajcovic.notification.base;
+package io.github.mkrajcovic.notification.base;
 
 import static java.util.Objects.isNull;
 

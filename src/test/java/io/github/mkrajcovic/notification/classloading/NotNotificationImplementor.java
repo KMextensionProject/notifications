@@ -1,9 +1,9 @@
-package com.mkrajcovic.notification.classloading;
+package io.github.mkrajcovic.notification.classloading;
 
 import java.io.IOException;
 
-import com.mkrajcovic.notification.base.Message;
-import com.mkrajcovic.notification.base.Recipient;
+import io.github.mkrajcovic.notification.base.Message;
+import io.github.mkrajcovic.notification.base.Recipient;
 
 public class NotNotificationImplementor {
 

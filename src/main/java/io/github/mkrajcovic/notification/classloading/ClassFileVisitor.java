@@ -1,4 +1,4 @@
-package com.mkrajcovic.notification.classloading;
+package io.github.mkrajcovic.notification.classloading;
 
 import static java.nio.file.FileVisitResult.CONTINUE;
 

@@ -1,4 +1,4 @@
-package com.mkrajcovic.notification.classloading;
+package io.github.mkrajcovic.notification.classloading;
 
 import static java.nio.file.Files.walkFileTree;
 import static java.util.Arrays.stream;
@@ -22,8 +22,8 @@ import java.util.logging.Logger;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
-import com.mkrajcovic.notification.base.Notification;
-import com.mkrajcovic.notification.base.StandardOutputNotification;
+import io.github.mkrajcovic.notification.base.Notification;
+import io.github.mkrajcovic.notification.base.StandardOutputNotification;
 
 /**
  * Use this class to load multiple plugged in domain {@link Notification}
@@ -38,7 +38,7 @@ import com.mkrajcovic.notification.base.StandardOutputNotification;
 public class NotificationLoader {
 
 	private static final Logger LOG = getLogger(NotificationLoader.class.getName());
-	private static final String DOMAIN_PACKAGE = "com.mkrajcovic.notification";
+	private static final String DOMAIN_PACKAGE = "io.github.mkrajcovic.notification";
 
 	private NotificationLoader() {
 		throw new IllegalStateException("NotificationLoader was not designed to be instantiated");
@@ -48,7 +48,7 @@ public class NotificationLoader {
 	 * Uses reflection to load registered {@link Notification} direct
 	 * implementations found on the class path in the following order:
 	 * <ul>
-	 * <li>modules under {@code com.mkrajcovic.notification} domain</li>
+	 * <li>modules under {@code io.github.mkrajcovic.notification} domain</li>
 	 * <li>user classes added to the {@link GlobalNotificationRegistry}</li>
 	 * </ul>
 	 * <p>
@@ -61,16 +61,13 @@ public class NotificationLoader {
 	 * @return non-null, non-empty list of registered notification objects
 	 */
 	public static List<Notification> loadRegisteredNotifications() {
-		Set<String> classNames = loadClassNames(DOMAIN_PACKAGE);
-		Set<Class<? extends Notification>> registeredClasses = findRegisteredImplementors(classNames);
-
-		// user registered classes
-		GlobalNotificationRegistry registry = GlobalNotificationRegistry.getInstance();
-		registeredClasses.addAll(registry.getRegisteredClasses());
+		Set<Class<? extends Notification>> registeredClasses = findImplementors(loadClassNames(DOMAIN_PACKAGE));
+		registeredClasses.addAll(GlobalNotificationRegistry.getInstance().getRegisteredClasses());
 
 		List<Notification> notifications = instantiate(registeredClasses);
 		if (notifications.isEmpty()) {
-			LOG.info("Domain modules are missing and registry is empty, registering StandardOutputNotification");
+			LOG.warning("Domain modules are missing and user registry is empty");
+			LOG.info("Registering the StandardOutputNotification as default");
 			notifications.add(new StandardOutputNotification());
 		} else {
 			LOG.info(() -> "Registered notifications for: " + registeredClasses.stream()
@@ -98,7 +95,7 @@ public class NotificationLoader {
 		if (nonNull(resourceUrl)) {
 			return resourceUrl.getFile();
 		}
-		throw new IllegalArgumentException("Missing package path " + packagePath);
+		throw new IllegalStateException("Unable to locate resource " + packagePath);
 	}
 
 	private static Set<String> readClassNamesFromJarFile(String file, String packagePath) {
@@ -131,7 +128,7 @@ public class NotificationLoader {
 	}
 
 	@SuppressWarnings("unchecked")
-	private static Set<Class<? extends Notification>> findRegisteredImplementors(Set<String> classNames) {
+	private static Set<Class<? extends Notification>> findImplementors(Set<String> classNames) {
 		return classNames.stream()
 			.map(NotificationLoader::getClass)
 			.filter(Objects::nonNull)
