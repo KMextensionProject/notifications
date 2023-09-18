@@ -5,10 +5,11 @@
 
 	<groupId>io.github.kmextensionproject.notification</groupId>
 	<artifactId>notifications</artifactId>
-	<version>1.0</version>
+	<version>1.6</version>
 	<packaging>jar</packaging>
 
 	<name>notifications</name>
+	<description>simple unified notification interface with runtime loading capability</description>
 	<url>https://github.com/KMextensionProject/notifications</url>
 	<scm>
 		<url>https://github.com/KMextensionProject/notifications.git</url>
