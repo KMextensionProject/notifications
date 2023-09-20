@@ -1,5 +1,7 @@
 package io.github.kmextensionproject.notification.base;
 
+import static io.github.kmextensionproject.notification.base.NotificationResult.Status.SUCCESS;
+
 import java.io.IOException;
 
 /**
@@ -14,8 +16,8 @@ public class StandardOutputNotification implements Notification {
 	 * Prints the message subject and body to the standard output.
 	 */
 	@Override
-	public void sendNotification(Message message, Recipient recipient) throws IOException {
+	public NotificationResult sendNotification(Message message, Recipient recipient) throws IOException {
 		System.out.println("Console Notification: " + message.getSubject() + " - " + message.getBody()); // NOSONAR
+		return new NotificationResult(SUCCESS);
 	}
-
 }

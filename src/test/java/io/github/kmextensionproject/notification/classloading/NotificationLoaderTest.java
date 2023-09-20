@@ -9,9 +9,6 @@ import org.junit.jupiter.api.Test;
 
 import io.github.kmextensionproject.notification.base.Notification;
 import io.github.kmextensionproject.notification.base.StandardOutputNotification;
-import io.github.kmextensionproject.notification.classloading.GlobalNotificationRegistry;
-import io.github.kmextensionproject.notification.classloading.NotificationLoader;
-import io.github.kmextensionproject.notification.classloading.NotificationRegistry;
 import user.domain.UserTestNotification;
 
 class NotificationLoaderTest {
