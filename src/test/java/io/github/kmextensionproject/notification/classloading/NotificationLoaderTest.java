@@ -8,6 +8,7 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import io.github.kmextensionproject.notification.base.Notification;
+import io.github.kmextensionproject.notification.base.StandardOutputNotification;
 import io.github.kmextensionproject.notification.classloading.GlobalNotificationRegistry;
 import io.github.kmextensionproject.notification.classloading.NotificationLoader;
 import io.github.kmextensionproject.notification.classloading.NotificationRegistry;
@@ -37,7 +38,8 @@ class NotificationLoaderTest {
 		assertEquals(UserTestNotification.class, notifications.get(1).getClass());
 
 		assertFalse(notifications.stream()
-			.anyMatch(e -> e.getClass().equals(NotNotificationImplementor.class)));
+			.map(Object::getClass)
+			.anyMatch(e -> e.equals(NotNotificationImplementor.class) || e.equals(StandardOutputNotification.class)));
 	}
 
 }

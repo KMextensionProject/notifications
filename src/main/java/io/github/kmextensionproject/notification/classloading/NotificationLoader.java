@@ -132,6 +132,9 @@ public class NotificationLoader {
 		return classNames.stream()
 			.map(NotificationLoader::getClass)
 			.filter(Objects::nonNull)
+			// all are being loaded, so omit this one, it will be instantiated
+			// explicitly later when there is no suitable notification present
+			.filter(e -> !StandardOutputNotification.class.equals(e))
 			.filter(NotificationLoader::isNotificationSubclass)
 			.map(e -> (Class<? extends Notification>) e)
 			.collect(toCollection(LinkedHashSet::new));
