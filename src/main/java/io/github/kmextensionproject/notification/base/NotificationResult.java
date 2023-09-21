@@ -13,14 +13,12 @@ public class NotificationResult {
 
 	private Status status;
 	private String message;
+	private Exception failureCause;
 
-	public NotificationResult(Status status) {
-		this(status, "");
-	}
-
-	public NotificationResult(Status status, String message) {
+	private NotificationResult(Status status, String message, Exception cause) {
 		this.status = status;
 		this.message = message;
+		this.failureCause = cause;
 	}
 
 	/**
@@ -37,5 +35,49 @@ public class NotificationResult {
 	 */
 	public String getMessage() {
 		return message;
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public Exception getFailureCause() {
+		return this.failureCause;
+	}
+
+	/**
+	 *
+	 * @return
+	 */
+	public static NotificationResult success() {
+		return success("");
+	}
+
+	/**
+	 * 
+	 * @param message
+	 * @return
+	 */
+	public static NotificationResult success(String message) {
+		return new NotificationResult(Status.SUCCESS, message, null);
+	}
+
+	/**
+	 * 
+	 * @param message
+	 * @return
+	 */
+	public static NotificationResult failure(String message) {
+		return failure(message, null);
+	}
+
+	/**
+	 * 
+	 * @param message
+	 * @param causeOfFailure
+	 * @return
+	 */
+	public static NotificationResult failure(String message, Exception causeOfFailure) {
+		return new NotificationResult(Status.FAILURE, message, causeOfFailure);
 	}
 }

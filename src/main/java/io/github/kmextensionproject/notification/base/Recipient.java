@@ -24,7 +24,11 @@ public class Recipient {
 		return this;
 	}
 
-	public Recipient withCustomAddress(String customAddress) {
+	/**
+	 * @param customAddress
+	 *            - may be chat identifier or similar binding property
+	 */
+	public Recipient withOtherAddress(String customAddress) {
 		this.other = customAddress;
 		return this;
 	}
@@ -41,7 +45,7 @@ public class Recipient {
 		return this.phoneNumber;
 	}
 
-	public String getCustomAddress() {
+	public String getOtherAddress() {
 		return this.other;
 	}
 

@@ -1,9 +1,8 @@
 package io.github.kmextensionproject.notification.base;
 
+import static io.github.kmextensionproject.notification.base.NotificationResult.success;
 import static io.github.kmextensionproject.notification.base.NotificationResult.Status.FAILURE;
-import static io.github.kmextensionproject.notification.base.NotificationResult.Status.SUCCESS;
 
-import java.io.IOException;
 import java.util.Collection;
 
 import io.github.kmextensionproject.notification.classloading.GlobalNotificationRegistry;
@@ -26,18 +25,16 @@ public interface Notification {
 	 *
 	 * @param message   - what to be sent
 	 * @param recipient - which recipients to send the message to
-	 * @throws IOException - if some communication failure occurs
 	 */
-	public NotificationResult sendNotification(Message message, Recipient recipient) throws IOException;
+	public NotificationResult sendNotification(Message message, Recipient recipient);
 
 	/**
 	 * Sends one notification message to multiple recipients.
 	 *
 	 * @param message       - what to be sent
 	 * @param recipientList - which recipients to send the message to
-	 * @throws IOException - if some communication failure occurs
 	 */
-	public default NotificationResult sendNotification(Message message, Collection<Recipient> recipientList) throws IOException {
+	public default NotificationResult sendNotification(Message message, Collection<Recipient> recipientList) {
 		NotificationResult result;
 		for (Recipient recipient : recipientList) {
 			result = sendNotification(message, recipient);
@@ -45,6 +42,6 @@ public interface Notification {
 				return result;
 			}
 		}
-		return new NotificationResult(SUCCESS);
+		return success();
 	}
 }
