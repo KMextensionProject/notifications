@@ -25,14 +25,20 @@ public interface Notification {
 	 *
 	 * @param message   - what to be sent
 	 * @param recipient - which recipients to send the message to
+	 * @return result of processing this notification
 	 */
 	public NotificationResult sendNotification(Message message, Recipient recipient);
 
 	/**
 	 * Sends one notification message to multiple recipients.
+	 * <p>
+	 * This method returns successful result object if the message is successfully
+	 * sent to every recipient, otherwise the failure object is returned containing
+	 * first occurence of the failure.
 	 *
 	 * @param message       - what to be sent
 	 * @param recipientList - which recipients to send the message to
+	 * @return result of processing this notification
 	 */
 	public default NotificationResult sendNotification(Message message, Collection<Recipient> recipientList) {
 		NotificationResult result;

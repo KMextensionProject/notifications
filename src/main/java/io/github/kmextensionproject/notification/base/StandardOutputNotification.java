@@ -12,6 +12,7 @@ public class StandardOutputNotification implements Notification {
 
 	/**
 	 * Prints the message subject and body to the standard output.
+	 * @return successful notification result with empty description
 	 */
 	@Override
 	public NotificationResult sendNotification(Message message, Recipient recipient) {
